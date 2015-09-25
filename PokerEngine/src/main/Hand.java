@@ -15,6 +15,10 @@ public class Hand extends PokerHands{
 	private ArrayList<Integer> cardRanks = new ArrayList<Integer>();
 	// The array that contains just the suit of each card in the hand
 	private ArrayList<eSuits> cardSuits = new ArrayList<eSuits>();
+	// The array that contains the left over kickers in the hand.
+	private ArrayList<Integer> kicker = new ArrayList<Integer>();
+	private int highHand = 0;
+	private int lowHand = 0;
 	
 	// A constructor that draws five cards out of the deck which was 
 	// passed as the constructor's argument
@@ -77,5 +81,29 @@ public class Hand extends PokerHands{
 	
 	public ArrayList<eSuits> getCardSuits(){
 		return cardSuits;
+	}
+
+	public ArrayList<Integer> getKicker() {
+		return kicker;
+	}
+
+	public void setKicker(ArrayList<Integer> kicker) {
+		this.kicker = kicker;
+	}
+
+	public int getHighHand() {
+		return highHand;
+	}
+
+	public void setHighHand(int highHand) {
+		this.highHand = highHand;
+	}
+
+	public int getLowHand() {
+		return lowHand;
+	}
+
+	public void setLowHand(int lowHand) {
+		this.lowHand = lowHand;
 	}
 }
