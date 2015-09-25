@@ -3,15 +3,17 @@ package main;
 //Import ArrayList to store cards
 import java.util.ArrayList;
 
+import pokerEnums.eSuits;
+
 public class Card {
 	
 	// The number on the card
 	private int rank;
 	// The suit of the card
-	private String suit;
+	private eSuits suit;
 	
 	// A constructor for a card that takes in the card's number and suit
-	public Card(int rank, String suit){
+	public Card(int rank, eSuits suit){
 		this.rank = rank;
 		this.suit = suit;
 	}
@@ -22,15 +24,19 @@ public class Card {
 	}
 	
 	// A getter that returns the cards suit
-	public String getSuit() {
+	public eSuits getSuit() {
 		return suit;
+	}
+
+	public void setSuit(eSuits suit) {
+		this.suit = suit;
 	}
 	
 	// Static method that prints out all the cards in a deck or hand
 	public static void printCards(ArrayList<Card> cards){
 		for (int i = 0; i < cards.size()-1; i++){
 			int number = cards.get(i).getRank();
-			String suit = cards.get(i).getSuit();
+			eSuits suit = cards.get(i).getSuit();
 			if (number == 1){
 				System.out.println("Ace");
 				System.out.println(suit);
@@ -50,4 +56,6 @@ public class Card {
 			System.out.println("------");
 		}
 	}
+
+	
 }

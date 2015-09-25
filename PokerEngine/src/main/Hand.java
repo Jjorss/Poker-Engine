@@ -3,6 +3,8 @@ package main;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import pokerEnums.eSuits;
+
 public class Hand extends PokerHands{
 	
 	// The type of the hand, whether it is a flush, straight, one pair...
@@ -12,7 +14,7 @@ public class Hand extends PokerHands{
 	// The array that contains just the number of each card in the hand
 	private ArrayList<Integer> cardRanks = new ArrayList<Integer>();
 	// The array that contains just the suit of each card in the hand
-	private ArrayList<String> cardSuits = new ArrayList<String>();
+	private ArrayList<eSuits> cardSuits = new ArrayList<eSuits>();
 	
 	// A constructor that draws five cards out of the deck which was 
 	// passed as the constructor's argument
@@ -73,7 +75,7 @@ public class Hand extends PokerHands{
 		return cardRanks;
 	}
 	
-	public ArrayList<String> getCardSuits(){
+	public ArrayList<eSuits> getCardSuits(){
 		return cardSuits;
 	}
 }

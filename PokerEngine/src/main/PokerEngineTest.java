@@ -8,6 +8,8 @@ import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
 
+import pokerEnums.eSuits;
+
 public class PokerEngineTest {
 	
 	Deck deck1;
@@ -28,29 +30,29 @@ public class PokerEngineTest {
 	
 	@Test
 	public void straightOrFlushTest() {
-		hand1.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, "Heart"),
-															   new Card(4, "Heart"),
-															   new Card(5, "Heart"),
-															   new Card(6, "Heart"),
-															   new Card(7, "Heart"))));
+		hand1.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.HEARTS),
+															   new Card(4, eSuits.HEARTS),
+															   new Card(5, eSuits.HEARTS),
+															   new Card(6, eSuits.HEARTS),
+															   new Card(7, eSuits.HEARTS))));
 		
-		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(11, "Heart"),
-				   											   new Card(10, "Heart"),
-				   											   new Card(1, "Heart"),
-				   											   new Card(12, "Heart"),
-				   											   new Card(13, "Heart"))));
+		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(11, eSuits.HEARTS),
+				   											   new Card(10, eSuits.HEARTS),
+				   											   new Card(1, eSuits.HEARTS),
+				   											   new Card(12, eSuits.HEARTS),
+				   											   new Card(13, eSuits.HEARTS))));
 		
-		hand3.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, "Heart"),
-				   											   new Card(7, "Heart"),
-				   											   new Card(3, "Heart"),
-				   											   new Card(2, "Heart"),
-				   											   new Card(4, "Heart"))));
+		hand3.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.HEARTS),
+				   											   new Card(7, eSuits.HEARTS),
+				   											   new Card(3, eSuits.HEARTS),
+				   											   new Card(2, eSuits.HEARTS),
+				   											   new Card(4, eSuits.HEARTS))));
 		
-		hand4.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(11, "Club"),
-				   											   new Card(10, "Spade"),
-				   											   new Card(1, "Heart"),
-				   											   new Card(12, "Diamond"),
-				   											   new Card(13, "Heart"))));
+		hand4.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(11, eSuits.CLUBS),
+				   											   new Card(10, eSuits.SPADES),
+				   											   new Card(1, eSuits.HEARTS),
+				   											   new Card(12, eSuits.DIAMONDS),
+				   											   new Card(13, eSuits.HEARTS))));
 		assertTrue(PokerHands.straightOrFlush(hand1));
 		assertTrue(PokerHands.straightOrFlush(hand2));
 		assertTrue(PokerHands.straightOrFlush(hand3));
@@ -63,23 +65,23 @@ public class PokerEngineTest {
 	
 	@Test
 	public void pairTest(){
-		hand1.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, "Heart"),
-				   											   new Card(4, "Heart"),
-				   											   new Card(5, "Heart"),
-				   											   new Card(6, "Heart"),
-				   											   new Card(7, "Heart"))));
+		hand1.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.HEARTS),
+				   											   new Card(4, eSuits.HEARTS),
+				   											   new Card(5, eSuits.HEARTS),
+				   											   new Card(6, eSuits.HEARTS),
+				   											   new Card(7, eSuits.HEARTS))));
 		
-		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, "Heart"),
-															   new Card(4, "Heart"),
-															   new Card(5, "Heart"),
-															   new Card(4, "Heart"),
-															   new Card(3, "Heart"))));
+		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.HEARTS),
+															   new Card(4, eSuits.HEARTS),
+															   new Card(5, eSuits.HEARTS),
+															   new Card(4, eSuits.HEARTS),
+															   new Card(3, eSuits.HEARTS))));
 		
-		hand3.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, "Heart"),
-															   new Card(4, "Heart"),
-															   new Card(5, "Heart"),
-															   new Card(4, "Heart"),
-															   new Card(6, "Heart"))));
+		hand3.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.HEARTS),
+															   new Card(4, eSuits.HEARTS),
+															   new Card(5, eSuits.HEARTS),
+															   new Card(4, eSuits.HEARTS),
+															   new Card(6, eSuits.HEARTS))));
 		
 		assertFalse(PokerHands.pair(hand1));
 		assertTrue(PokerHands.pair(hand2));
@@ -91,23 +93,23 @@ public class PokerEngineTest {
 	
 	@Test
 	public void rowTest(){
-		hand1.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, "Heart"),
-				   											   new Card(4, "Heart"),
-				   											   new Card(5, "Heart"),
-				   											   new Card(6, "Heart"),
-				   											   new Card(7, "Heart"))));
+		hand1.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.HEARTS),
+				   											   new Card(4, eSuits.HEARTS),
+				   											   new Card(5, eSuits.HEARTS),
+				   											   new Card(6, eSuits.HEARTS),
+				   											   new Card(7, eSuits.HEARTS))));
 	
-		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, "Heart"),
-															   new Card(4, "Club"),
-															   new Card(3, "Heart"),
-															   new Card(3, "Spade"),
-															   new Card(3, "Heart"))));
+		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.HEARTS),
+															   new Card(4, eSuits.CLUBS),
+															   new Card(3, eSuits.HEARTS),
+															   new Card(3, eSuits.SPADES),
+															   new Card(3, eSuits.HEARTS))));
 	
-		hand3.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, "Heart"),
-															   new Card(4, "Heart"),
-															   new Card(5, "Spade"),
-															   new Card(3, "Club"),
-															   new Card(3, "Spade"))));
+		hand3.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.HEARTS),
+															   new Card(4, eSuits.HEARTS),
+															   new Card(5, eSuits.SPADES),
+															   new Card(3, eSuits.CLUBS),
+															   new Card(3, eSuits.SPADES))));
 		assertFalse(PokerHands.row(hand1));
 		assertTrue(PokerHands.row(hand2));
 		assertTrue(PokerHands.row(hand3));
@@ -118,23 +120,23 @@ public class PokerEngineTest {
 	
 	@Test
 	public void fullHouseTest(){
-		hand1.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, "Heart"),
-				   											   new Card(4, "Heart"),
-				   											   new Card(5, "Heart"),
-				   											   new Card(6, "Heart"),
-				   											   new Card(7, "Heart"))));
+		hand1.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.HEARTS),
+				   											   new Card(4, eSuits.HEARTS),
+				   											   new Card(5, eSuits.HEARTS),
+				   											   new Card(6, eSuits.HEARTS),
+				   											   new Card(7, eSuits.HEARTS))));
 		
-		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, "Heart"),
-															   new Card(4, "Heart"),
-															   new Card(5, "Heart"),
-															   new Card(4, "Heart"),
-															   new Card(3, "Heart"))));
+		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.HEARTS),
+															   new Card(4, eSuits.HEARTS),
+															   new Card(5, eSuits.HEARTS),
+															   new Card(4, eSuits.HEARTS),
+															   new Card(3, eSuits.HEARTS))));
 		
-		hand3.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, "Heart"),
-															   new Card(4, "Heart"),
-															   new Card(3, "Heart"),
-															   new Card(4, "Club"),
-															   new Card(4, "Heart"))));
+		hand3.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.HEARTS),
+															   new Card(4, eSuits.HEARTS),
+															   new Card(3, eSuits.HEARTS),
+															   new Card(4, eSuits.CLUBS),
+															   new Card(4, eSuits.HEARTS))));
 		assertFalse(PokerHands.fullHouse(hand1));
 		assertFalse(PokerHands.fullHouse(hand2));
 		assertTrue(PokerHands.fullHouse(hand3));

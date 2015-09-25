@@ -5,6 +5,8 @@ import java.util.ArrayList;
 // Import Collections to shuffle array list
 import java.util.Collections;
 
+import pokerEnums.eSuits;
+
 public class Deck{
 	
 	// This is the array that holds the cards to be drawn
@@ -17,16 +19,16 @@ public class Deck{
 	public Deck(Boolean wildCards){
 		cards = new ArrayList<Card>();
 		for (int i = 1; i < 14; i++){
-			cards.add(new Card(i, "Heart"));
+			cards.add(new Card(i, eSuits.HEARTS));
 		}
 		for (int i = 1; i < 14; i++){
-			cards.add(new Card(i, "Diamond"));
+			cards.add(new Card(i, eSuits.DIAMONDS));
 		}
 		for (int i = 1; i < 14; i++){
-			cards.add(new Card(i, "Spade"));
+			cards.add(new Card(i, eSuits.SPADES));
 		}
 		for (int i = 1; i < 14; i++){
-			cards.add(new Card(i, "Club"));
+			cards.add(new Card(i, eSuits.CLUBS));
 		}
 		Collections.shuffle(cards);
 		if(wildCards){
