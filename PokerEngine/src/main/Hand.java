@@ -3,12 +3,15 @@ package main;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import pokerEnums.eHands;
 import pokerEnums.eSuits;
 
 public class Hand extends PokerHands{
 	
 	// The type of the hand, whether it is a flush, straight, one pair...
-	private String typeOfHand = "High Card";
+	private eHands typeOfHand = eHands.HIGHCARD;
+	// The array that contains a bunch of hands.
+	ArrayList<Hand> arrayOfHands = new ArrayList<Hand>();
 	// The array that contains the cards that one has in their hand
 	private ArrayList<Card> cardsInHand = new ArrayList<Card>();
 	// The array that contains just the number of each card in the hand
@@ -37,23 +40,44 @@ public class Hand extends PokerHands{
 	// return an integer
 	// This method judges a hand and return an integer based on how good the hand
 	// is, the higher the integer the better the hand. Range: 1-10
-	public String judge(Hand hand) {
+	public static eHands judge(Hand hand) {
 		if(PokerHands.straightOrFlush(hand)) {
-			return getTypeOfHand();
+			return hand.getTypeOfHand();
 		} else if(PokerHands.fullHouse(hand)) {
-			return getTypeOfHand();
+			return hand.getTypeOfHand();
 		} else if(PokerHands.row(hand)) {
-			return getTypeOfHand();
+			return hand.getTypeOfHand();
 		} else if(PokerHands.pair(hand)) {
-			return getTypeOfHand();
+			return hand.getTypeOfHand();
 		} else {
 			hand.setHighHand(0);
 			hand.setLowHand(0);
 			hand.setKicker(hand.getCardRanks());
-			hand.setTypeOfHand("High Card");
-			return getTypeOfHand();
+			hand.setTypeOfHand(eHands.HIGHCARD);
+			return hand.getTypeOfHand();
 		}
 		
+	}
+	
+	public static Hand judge(ArrayList<Hand> arrayOfHands) {
+		ArrayList<eHands> score = new ArrayList<eHands>();
+		int max = 0;
+		int position = 0;
+		for(int i = 0; i < arrayOfHands.size(); i++) {
+			score.add(Hand.judge(arrayOfHands.get(i)));
+		}
+		for(int x = 0; x < score.size(); x++) {
+			max = Math.max(score.get(x).getScore(), max);
+		}
+		System.out.println(score.get(1).getScore());
+		for(int y = 0; y < score.size(); y++) {
+			if(max == score.get(y).getScore()) {
+				position = y;
+				break;
+			}
+		}
+		
+		return arrayOfHands.get(position);
 	}
 	
 	public ArrayList<Card> getcardsInHand() {
@@ -71,11 +95,11 @@ public class Hand extends PokerHands{
 		Collections.sort(cardRanks);
 	}
 	
-	public void setTypeOfHand(String handType){
-		this.typeOfHand = handType;
+	public void setTypeOfHand(eHands royalflush){
+		this.typeOfHand = royalflush;
 	}
 	
-	public String getTypeOfHand(){
+	public eHands getTypeOfHand(){
 		return typeOfHand;
 	}
 	

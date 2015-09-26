@@ -3,6 +3,8 @@ package main;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import pokerEnums.eHands;
+
 public abstract class PokerHands {
 	
 	// sets low hand. high hand, and kicker TESTED
@@ -42,23 +44,23 @@ public abstract class PokerHands {
 		}
 		if (straight && flush) {
 			if (hand.getCardRanks().get(1) == 10) {
-				hand.setTypeOfHand("Royal Flush");
+				hand.setTypeOfHand(eHands.ROYALFLUSH);
 				hand.setKicker(kicker);
 				hand.setLowHand(0);
 				return true;
 			} else {
-				hand.setTypeOfHand("Straight Flush");
+				hand.setTypeOfHand(eHands.STRAIGHFLUSH);
 				hand.setKicker(kicker);
 				hand.setLowHand(0);
 				return true;
 			}
 		} else if (flush) {
-			hand.setTypeOfHand("Flush");
+			hand.setTypeOfHand(eHands.FLUSH);
 			hand.setKicker(kicker);
 			hand.setLowHand(0);
 			return true;
 		} else if (straight) {
-			hand.setTypeOfHand("Straight");
+			hand.setTypeOfHand(eHands.STRAIGHT);
 			hand.setKicker(kicker);
 			hand.setLowHand(0);
 			return true;
@@ -71,7 +73,7 @@ public abstract class PokerHands {
 		ArrayList<Integer> kicker = new ArrayList<Integer>();
 		for (int i = 0; i < 5; i++) {
 			if (Collections.frequency(hand.getCardRanks(), hand.getCardRanks().get(i)) == 4) {
-				hand.setTypeOfHand("Four of a Kind");
+				hand.setTypeOfHand(eHands.FOUROFAKIND);
 				hand.setHighHand(hand.getCardRanks().get(i));
 				hand.setLowHand(0);
 				for(int x = 0; x < 5; x++) {
@@ -82,7 +84,7 @@ public abstract class PokerHands {
 				hand.setKicker(kicker);
 				return true;
 			} else if (Collections.frequency(hand.getCardRanks(), hand.getCardRanks().get(i)) == 3) {
-				hand.setTypeOfHand("Three of a Kind");
+				hand.setTypeOfHand(eHands.THREEOFAKIND);
 				hand.setHighHand(hand.getCardRanks().get(i));
 				hand.setLowHand(0);
 				for(int x = 0; x < 5; x++) {
@@ -113,12 +115,12 @@ public abstract class PokerHands {
 			}
 		}
 		if (x == 2) {
-			hand.setTypeOfHand("One Pair");
+			hand.setTypeOfHand(eHands.ONEPAIR);
 			hand.setHighHand(highHand);
 			hand.setKicker(kicker);
 			return true;
 		} else if (x == 4) {
-			hand.setTypeOfHand("Two Pair");
+			hand.setTypeOfHand(eHands.TWOPAIR);
 			hand.setHighHand(highHand);
 			hand.setKicker(kicker);
 			int min = 99;
@@ -138,7 +140,7 @@ public abstract class PokerHands {
 	public static Boolean fullHouse(Hand hand) {
 		ArrayList<Integer> kicker = new ArrayList<Integer>();
 		if (row(hand) && pair(hand)) {
-			hand.setTypeOfHand("Full House");
+			hand.setTypeOfHand(eHands.FULLHOUSE);
 			hand.setKicker(kicker);
 			for(int i = 0; i < 5; i++) {
 				if(Collections.frequency(hand.getCardRanks(), hand.getCardRanks().get(i)) == 3){ 
