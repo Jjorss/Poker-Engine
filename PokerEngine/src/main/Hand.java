@@ -47,6 +47,10 @@ public class Hand extends PokerHands{
 		} else if(PokerHands.pair(hand)) {
 			return getTypeOfHand();
 		} else {
+			hand.setHighHand(0);
+			hand.setLowHand(0);
+			hand.setKicker(hand.getCardRanks());
+			hand.setTypeOfHand("High Card");
 			return getTypeOfHand();
 		}
 		

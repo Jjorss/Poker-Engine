@@ -221,6 +221,81 @@ public class PokerEngineTest {
 		System.out.println("LowHand: " + hand1.getLowHand());
 		System.out.println(hand1.getKicker());
 		System.out.println("----------");
+		
+		System.out.println("Test Six");
+		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.CLUBS),
+				   new Card(8, eSuits.CLUBS),
+				   new Card(9, eSuits.CLUBS),
+				   new Card(4, eSuits.CLUBS),
+				   new Card(1, eSuits.CLUBS))));
+		assertFalse(hand2.judge(hand2) == "Full House");
+		assertTrue(hand2.judge(hand2) == "Flush");
+		System.out.println(hand2.judge(hand2));
+		System.out.println(hand2.getTypeOfHand());
+		System.out.println("HighHand: " + hand2.getHighHand());
+		System.out.println("LowHand: " + hand2.getLowHand());
+		System.out.println(hand2.getKicker());
+		System.out.println("----------");
+		
+		System.out.println("Test Seven");
+		hand3.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.CLUBS),
+				   new Card(2, eSuits.CLUBS),
+				   new Card(4, eSuits.CLUBS),
+				   new Card(5, eSuits.CLUBS),
+				   new Card(1, eSuits.CLUBS))));
+		assertFalse(hand3.judge(hand3) == "Full House");
+		assertTrue(hand3.judge(hand3) == "Straight Flush");
+		System.out.println(hand3.judge(hand3));
+		System.out.println(hand3.getTypeOfHand());
+		System.out.println("HighHand: " + hand3.getHighHand());
+		System.out.println("LowHand: " + hand3.getLowHand());
+		System.out.println(hand3.getKicker());
+		System.out.println("----------");
+		
+		System.out.println("Test Eight");
+		hand4.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(10, eSuits.CLUBS),
+				   new Card(11, eSuits.CLUBS),
+				   new Card(12, eSuits.CLUBS),
+				   new Card(13, eSuits.CLUBS),
+				   new Card(1, eSuits.CLUBS))));
+		assertFalse(hand4.judge(hand4) == "Full House");
+		assertTrue(hand4.judge(hand4) == "Royal Flush");
+		System.out.println(hand4.judge(hand4));
+		System.out.println(hand4.getTypeOfHand());
+		System.out.println("HighHand: " + hand4.getHighHand());
+		System.out.println("LowHand: " + hand4.getLowHand());
+		System.out.println(hand4.getKicker());
+		System.out.println("----------");
+		
+		System.out.println("Test Nine");
+		hand1.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(1, eSuits.DIAMONDS),
+				   new Card(1, eSuits.HEARTS),
+				   new Card(1, eSuits.CLUBS),
+				   new Card(3, eSuits.SPADES),
+				   new Card(3, eSuits.CLUBS))));
+		assertFalse(hand1.judge(hand1) == "One Pair");
+		assertTrue(hand1.judge(hand1) == "Full House");
+		System.out.println(hand1.judge(hand1));
+		System.out.println(hand1.getTypeOfHand());
+		System.out.println("HighHand: " + hand1.getHighHand());
+		System.out.println("LowHand: " + hand1.getLowHand());
+		System.out.println(hand1.getKicker());
+		System.out.println("----------");
+		
+		System.out.println("Test Ten");
+		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.DIAMONDS),
+				   new Card(4, eSuits.HEARTS),
+				   new Card(5, eSuits.CLUBS),
+				   new Card(6, eSuits.SPADES),
+				   new Card(13, eSuits.CLUBS))));
+		assertFalse(hand2.judge(hand2) == "One Pair");
+		assertTrue(hand2.judge(hand2) == "High Card");
+		System.out.println(hand2.judge(hand2));
+		System.out.println(hand2.getTypeOfHand());
+		System.out.println("HighHand: " + hand2.getHighHand());
+		System.out.println("LowHand: " + hand2.getLowHand());
+		System.out.println(hand2.getKicker());
+		System.out.println("----------");
 	}
 
 }

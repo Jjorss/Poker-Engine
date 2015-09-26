@@ -5,14 +5,21 @@ import java.util.Collections;
 
 public abstract class PokerHands {
 	
-	// sets low hand
+	// sets low hand. high hand, and kicker TESTED
 	public static Boolean straightOrFlush(Hand hand) {
 		Object one = 1;
 		Boolean straight = false;
 		Boolean flush = true;
 		int max = 0;
-		for(int a = 0; a < 5; a++) {
-			max = Math.max(max, hand.getCardRanks().get(a));
+		ArrayList<Integer> kicker = new ArrayList<Integer>();
+		for(int a = 0; a < hand.getCardRanks().size(); a++) {
+			if(hand.getCardRanks().get(a) == 1) {
+				max = 1;
+				break;
+			} else {
+				max = Math.max(max, hand.getCardRanks().get(a));
+			}
+			
 		}
 		hand.setHighHand(max);
 		for (int i = 1; i < 5; i++) {
@@ -28,32 +35,37 @@ public abstract class PokerHands {
 			}
 			if (Collections.frequency(helperArray, hand.getCardRanks().get(0)) == hand.getCardRanks().size()) {
 				straight = true;
-				
 			}
 		}
+		if (hand.getCardRanks().size() == 4) {
+			hand.getCardRanks().add(0, 1);
+		}
 		if (straight && flush) {
-			if (hand.getCardRanks().get(0) == 10) {
+			if (hand.getCardRanks().get(1) == 10) {
 				hand.setTypeOfHand("Royal Flush");
+				hand.setKicker(kicker);
 				hand.setLowHand(0);
 				return true;
 			} else {
 				hand.setTypeOfHand("Straight Flush");
+				hand.setKicker(kicker);
 				hand.setLowHand(0);
 				return true;
 			}
 		} else if (flush) {
 			hand.setTypeOfHand("Flush");
+			hand.setKicker(kicker);
 			hand.setLowHand(0);
 			return true;
 		} else if (straight) {
 			hand.setTypeOfHand("Straight");
+			hand.setKicker(kicker);
 			hand.setLowHand(0);
 			return true;
 		} else {
 			return false;
 		}
 	}
-
 	// sets low hand, High hand, kicker TESTED
 	public static Boolean row(Hand hand) {
 		ArrayList<Integer> kicker = new ArrayList<Integer>();
@@ -124,8 +136,17 @@ public abstract class PokerHands {
 
 	//
 	public static Boolean fullHouse(Hand hand) {
+		ArrayList<Integer> kicker = new ArrayList<Integer>();
 		if (row(hand) && pair(hand)) {
 			hand.setTypeOfHand("Full House");
+			hand.setKicker(kicker);
+			for(int i = 0; i < 5; i++) {
+				if(Collections.frequency(hand.getCardRanks(), hand.getCardRanks().get(i)) == 3){ 
+					hand.setHighHand(hand.getCardRanks().get(i));
+				} else {
+					hand.setLowHand(hand.getCardRanks().get(i));
+				}
+			}
 			return true;
 		}
 		return false;
