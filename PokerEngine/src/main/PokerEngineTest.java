@@ -302,7 +302,7 @@ public class PokerEngineTest {
 	@Test
 	public void JudgeHands() {
 		System.out.println("---------------------JudgeHands TEST---------------");
-		System.out.println("Test one");
+		System.out.println("Test One");
 		ArrayList<Hand> arrayOfHands = new ArrayList<Hand>();
 		arrayOfHands.add(hand1);
 		arrayOfHands.add(hand2);
@@ -318,8 +318,111 @@ public class PokerEngineTest {
 				   new Card(6, eSuits.HEARTS))));
 		System.out.println(Hand.judge(hand1));
 		System.out.println(Hand.judge(hand2));
+		System.out.println("Hand2");
+		assertTrue(Hand.judge(arrayOfHands) == hand2);
+		System.out.println("----------");
+		
+		System.out.println("Test Two");
+		hand1.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.CLUBS),
+				   new Card(3, eSuits.HEARTS),
+				   new Card(7, eSuits.HEARTS),
+				   new Card(7, eSuits.HEARTS),
+				   new Card(9, eSuits.HEARTS))));
+		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.CLUBS),
+				   new Card(3, eSuits.HEARTS),
+				   new Card(6, eSuits.HEARTS),
+				   new Card(4, eSuits.HEARTS),
+				   new Card(6, eSuits.HEARTS))));
+		System.out.println(Hand.judge(hand1));
+		System.out.println(Hand.judge(hand2));
+		System.out.println("Hand1");
+		assertTrue(Hand.judge(arrayOfHands) == hand1);
+		assertFalse(Hand.judge(arrayOfHands) == hand2);
+		System.out.println("----------");
+		
+		System.out.println("Test Three");
+		hand1.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.CLUBS),
+				   new Card(3, eSuits.HEARTS),
+				   new Card(7, eSuits.HEARTS),
+				   new Card(7, eSuits.HEARTS),
+				   new Card(9, eSuits.HEARTS))));
+		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(2, eSuits.CLUBS),
+				   new Card(2, eSuits.HEARTS),
+				   new Card(7, eSuits.HEARTS),
+				   new Card(4, eSuits.HEARTS),
+				   new Card(7, eSuits.HEARTS))));
+		System.out.println(Hand.judge(hand1));
+		System.out.println(Hand.judge(hand2));
+		System.out.println(hand1.getHighHand());
+		System.out.println(hand2.getHighHand());
+		System.out.println("Hand1");
+		Hand.judge(arrayOfHands);
+		assertTrue(Hand.judge(arrayOfHands) == hand1);
+		assertFalse(Hand.judge(arrayOfHands) == hand2);
+		System.out.println("----------");
+		
+		System.out.println("Test Four");
+		hand1.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.CLUBS),
+				   new Card(3, eSuits.HEARTS),
+				   new Card(7, eSuits.HEARTS),
+				   new Card(5, eSuits.HEARTS),
+				   new Card(2, eSuits.HEARTS))));
+		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.CLUBS),
+				   new Card(3, eSuits.HEARTS),
+				   new Card(7, eSuits.HEARTS),
+				   new Card(5, eSuits.HEARTS),
+				   new Card(4, eSuits.HEARTS))));
+		System.out.println(Hand.judge(hand1));
+		System.out.println(Hand.judge(hand2));
+		System.out.println(hand1.getKicker());
+		System.out.println(hand2.getKicker());
+		System.out.println("Hand2");
 		Hand.judge(arrayOfHands);
 		assertTrue(Hand.judge(arrayOfHands) == hand2);
+		assertFalse(Hand.judge(arrayOfHands) == hand1);
+		System.out.println("----------");
+		
+		System.out.println("Test Five");
+		hand1.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.CLUBS),
+				   new Card(3, eSuits.HEARTS),
+				   new Card(7, eSuits.HEARTS),
+				   new Card(7, eSuits.HEARTS),
+				   new Card(2, eSuits.HEARTS))));
+		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.CLUBS),
+				   new Card(3, eSuits.HEARTS),
+				   new Card(7, eSuits.HEARTS),
+				   new Card(7, eSuits.HEARTS),
+				   new Card(4, eSuits.HEARTS))));
+		System.out.println(Hand.judge(hand1));
+		System.out.println(Hand.judge(hand2));
+		System.out.println(hand1.getKicker());
+		System.out.println(hand2.getKicker());
+		System.out.println("Hand2");
+		Hand.judge(arrayOfHands);
+		assertTrue(Hand.judge(arrayOfHands) == hand2);
+		assertFalse(Hand.judge(arrayOfHands) == hand1);
+		System.out.println("----------");
+		
+		System.out.println("Test Six");
+		hand1.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.CLUBS),
+				   new Card(4, eSuits.HEARTS),
+				   new Card(5, eSuits.HEARTS),
+				   new Card(6, eSuits.HEARTS),
+				   new Card(13, eSuits.HEARTS))));
+		hand2.setCardsInHand(new ArrayList<Card>(Arrays.asList(new Card(3, eSuits.CLUBS),
+				   new Card(4, eSuits.HEARTS),
+				   new Card(8, eSuits.HEARTS),
+				   new Card(6, eSuits.HEARTS),
+				   new Card(1, eSuits.HEARTS))));
+		System.out.println(Hand.judge(hand1));
+		System.out.println(Hand.judge(hand2));
+		System.out.println(hand1.getKicker());
+		System.out.println(hand2.getKicker());
+		System.out.println("Hand1");
+		Hand.judge(arrayOfHands);
+		assertTrue(Hand.judge(arrayOfHands) == hand2);
+		assertFalse(Hand.judge(arrayOfHands) == hand1);
+		System.out.println("----------");
 	}
 
 }

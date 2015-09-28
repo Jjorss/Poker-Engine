@@ -117,6 +117,7 @@ public abstract class PokerHands {
 		if (x == 2) {
 			hand.setTypeOfHand(eHands.ONEPAIR);
 			hand.setHighHand(highHand);
+			hand.setLowHand(0);
 			hand.setKicker(kicker);
 			return true;
 		} else if (x == 4) {
